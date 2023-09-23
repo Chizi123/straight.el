@@ -260,7 +260,9 @@
                       emacs-binary-path))
                   nil '(t t) nil
                   "--batch" "--no-window-system" "--quick"
-                  "--load" temp-file)))
+                  "--load" temp-file
+                  "--eval" "(message \"Something bad happening here\")"
+                  "--eval" "(shell-command-to-string (format \"kill %s\" (emacs-pid)))")))
             (unless (= 0 exit-status)
               (message
                (concat
